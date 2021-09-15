@@ -1,0 +1,41 @@
+﻿@model List<Item>;
+
+@{
+    ViewData["Title"] = "Admin | Items";
+}
+
+<div class="row">
+    <div class="col-md-offset-1 ">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Laptop Picture</th>
+                    <th>Manufacturer Company</th>
+                    <th>Laptop Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Item in Model)
+                {
+                    <tr>
+                        <td class="align-middle"><img class="img-rounded" src="~/images/Laptops/@(Item.ItemPicURL).jpg" alt="@Item.ItemName" style="max-width:150px" /></td>
+                        <td>@Html.DisplayFor(modelItem => Item.ItemName)</td>
+                        <td>@Html.DisplayFor(modelItem => Item.ItemBio)</td>
+                        <td>@Html.DisplayFor(modelItem => Item.Price)</td>
+
+                        <td>
+
+                            <a class="btn alert-warning" asp-action="Edit" asp-route-id="@Item.ItemID">Edit</a> |
+                            <a class="btn alert-danger" asp-action="Delete" asp-route-id="@Item.ItemID">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        <hr style="width:80%;"/>
+        <a class="btn alert-info" asp-action="Create">ADD New Item +</a>
+    </div>
+</div>

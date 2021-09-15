@@ -1,0 +1,38 @@
+﻿@model List<Item>;
+
+@{
+    ViewData["Title"] = "M Sh Laptops Market";
+}
+
+<div class="row">
+    <div class="col-md-offset-1 ">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Laptop Picture</th>
+                    <th>Manufacturer Company</th>
+                    <th>Laptop Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Item in Model)
+                {
+                    <tr>
+                        <td class="align-middle"><img class="img-rounded" src="~/images/Laptops/@(Item.ItemPicURL).jpg" alt="@Item.ItemName" style="max-width:150px" /></td>
+                        <td>@Html.DisplayFor(modelItem => Item.ItemName)</td>
+                        <td>@Html.DisplayFor(modelItem => Item.ItemBio)</td>
+                        <td>@Html.DisplayFor(modelItem => Item.Price)</td>
+
+                        <td>
+                            <a class="btn alert-success" asp-action="Order" asp-route-id="@Item.ItemID">Buy +</a>
+                            
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
